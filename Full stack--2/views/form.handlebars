@@ -1,0 +1,67 @@
+<div class="form-container">
+    <div class="form-header">
+        <h2><i class="fas fa-user-plus"></i> {{title}}</h2>
+        <p>Fill out the form below to submit your information</p>
+    </div>
+
+    {{#if message}}
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i> {{message}}
+        </div>
+    {{/if}}
+
+    <form action="/submit" method="POST" class="form">
+        <div class="form-group">
+            <label for="name">
+                <i class="fas fa-user"></i> Full Name *
+            </label>
+            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">
+                <i class="fas fa-envelope"></i> Email Address *
+            </label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email address">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">
+                <i class="fas fa-phone"></i> Phone Number
+            </label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+        </div>
+
+        <div class="form-group">
+            <label for="message">
+                <i class="fas fa-comment"></i> Message
+            </label>
+            <textarea id="message" name="message" rows="4" placeholder="Enter your message or comments"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i> Submit Form
+        </button>
+    </form>
+</div>
+
+<div class="info-section">
+    <h3><i class="fas fa-info-circle"></i> How it works</h3>
+    <div class="info-cards">
+        <div class="info-card">
+            <i class="fas fa-edit"></i>
+            <h4>1. Fill Form</h4>
+            <p>Enter your information in the form above</p>
+        </div>
+        <div class="info-card">
+            <i class="fas fa-save"></i>
+            <h4>2. Save Data</h4>
+            <p>Your data is saved as JSON on the server</p>
+        </div>
+        <div class="info-card">
+            <i class="fas fa-eye"></i>
+            <h4>3. View Results</h4>
+            <p>See all submissions on the display page</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="display-container">
+    <div class="display-header">
+        <h2><i class="fas fa-database"></i> {{title}}</h2>
+        <p>All form submissions stored as JSON data</p>
+    </div>
+
+    {{#if error}}
+        <div class="alert alert-error">
+            <i class="fas fa-exclamation-triangle"></i> {{error}}
+        </div>
+    {{/if}}
+
+    {{#if submissions}}
+        <div class="submissions-stats">
+            <div class="stat-card">
+                <i class="fas fa-list-ol"></i>
+                <div>
+                    <h3>{{submissions.length}}</h3>
+                    <p>Total Submissions</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="submissions-grid">
+            {{#each submissions}}
+                <div class="submission-card">
+                    <div class="submission-header">
+                        <h4><i class="fas fa-user"></i> {{this.name}}</h4>
+                        <span class="submission-id">ID: {{this.id}}</span>
+                    </div>
+                    
+                    <div class="submission-details">
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>{{this.email}}</span>
+                        </div>
+                        
+                        {{#if this.phone}}
+                            <div class="detail-item">
+                                <i class="fas fa-phone"></i>
+                                <span>{{this.phone}}</span>
+                            </div>
+                        {{/if}}
+                        
+                        {{#if this.message}}
+                            <div class="detail-item">
+                                <i class="fas fa-comment"></i>
+                                <span>{{this.message}}</span>
+                            </div>
+                        {{/if}}
+                        
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>{{formatDate this.timestamp}}</span>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="empty-state">
+            <i class="fas fa-inbox"></i>
+            <h3>No submissions yet</h3>
+            <p>No form submissions have been made yet.</p>
+            <a href="/" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Submit First Form
+            </a>
+        </div>
+    {{/if}}
+</div>
+
+<div class="json-preview">
+    <h3><i class="fas fa-code"></i> JSON Data Preview</h3>
+    <div class="json-container">
+        <pre><code>{{json submissions}}</code></pre>
+    </div>
+    <div class="json-actions">
+        <a href="/api/data" class="btn btn-secondary" target="_blank">
+            <i class="fas fa-download"></i> View Raw JSON
+        </a>
+    </div>
+</div>

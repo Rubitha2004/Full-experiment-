@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .data-item {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+        .data-item h3 {
+            color: #007bff;
+            margin-top: 0;
+        }
+        .data-field {
+            margin-bottom: 10px;
+        }
+        .data-field strong {
+            color: #555;
+        }
+        .nav-links {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .nav-links a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 10px 20px;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .nav-links a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+        .timestamp {
+            color: #888;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Submitted Data</h1>
+        
+        {{#if submissions}}
+            {{#each submissions}}
+                <div class="data-item">
+                    <h3>Submission #{{@index}}</h3>
+                    <div class="data-field">
+                        <strong>Name:</strong> {{this.name}}
+                    </div>
+                    <div class="data-field">
+                        <strong>Email:</strong> {{this.email}}
+                    </div>
+                    {{#if this.phone}}
+                        <div class="data-field">
+                            <strong>Phone:</strong> {{this.phone}}
+                        </div>
+                    {{/if}}
+                    {{#if this.message}}
+                        <div class="data-field">
+                            <strong>Message:</strong> {{this.message}}
+                        </div>
+                    {{/if}}
+                    {{#if this.timestamp}}
+                        <div class="timestamp">
+                            Submitted: {{this.timestamp}}
+                        </div>
+                    {{/if}}
+                </div>
+            {{/each}}
+        {{else}}
+            <div class="empty-state">
+                <h3>No submissions yet</h3>
+                <p>No form data has been submitted yet.</p>
+            </div>
+        {{/if}}
+        
+        <div class="nav-links">
+            <a href="/">Submit New Form</a>
+        </div>
+    </div>
+</body>
+</html>
