@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="counterApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS Counter</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      margin-top: 60px;
+      background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+      color: #333;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #2c3e50;
+    }
+
+    .counter {
+      font-size: 60px;
+      font-weight: bold;
+      margin: 30px 0;
+      color: #1abc9c;
+    }
+
+    button {
+      font-size: 18px;
+      margin: 8px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    button:nth-child(1) {
+      background-color: #27ae60; /* green */
+      color: white;
+    }
+
+    button:nth-child(2) {
+      background-color: #e67e22; /* orange */
+      color: white;
+    }
+
+    button:nth-child(3) {
+      background-color: #e74c3c; /* red */
+      color: white;
+    }
+  </style>
+</head>
+<body ng-controller="CounterController">
+
+  <h1>AngularJS Counter App</h1>
+  <div class="counter">{{ count }}</div>
+
+  <button ng-click="increment()">Increment</button>
+  <button ng-click="decrement()">Decrement</button>
+  <button ng-click="reset()">Reset</button>
+
+  <script>
+    // AngularJS App Module
+    var app = angular.module('counterApp', []);
+
+    // Controller
+    app.controller('CounterController', function($scope) {
+      $scope.count = 0;
+
+      $scope.increment = function() {
+        $scope.count++;
+      };
+
+      $scope.decrement = function() {
+        if ($scope.count > 0) {
+          $scope.count--;
+        }
+      };
+
+      $scope.reset = function() {
+        $scope.count = 0;
+      };
+    });
+  </script>
+
+</body>
+</html>
